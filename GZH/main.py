@@ -1,5 +1,6 @@
 import itchatmp
 import cy
+import random_num
 
 itchatmp.update_config(itchatmp.WechatConfig(
     token='your token',
@@ -10,6 +11,11 @@ itchatmp.update_config(itchatmp.WechatConfig(
 def text_reply(msg):
     if msg['Content'] == '帮助'
         return '帮助信息'
+    
+    elif re.search('[0-9]', msg['Content'][0]) and re.search('(-)', msg['Content'][:]) and re.search('[0-9]', msg['Content'][-1]):
+        num = msg.split('-')
+        return str(random_num.random_number(int(num[0]), int(num[-1])))
+    
     else:
         key = msg['Content'][-1]
         if "\u4e00" <= key <= "\u9fa5":

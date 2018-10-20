@@ -2,6 +2,7 @@ import itchatmp
 import cy
 import random_num
 import qianming
+import meizitu
 
 itchatmp.update_config(itchatmp.WechatConfig(
     token='your token',
@@ -19,6 +20,9 @@ def text_reply(msg):
     
     elif msg['Content'][0] in ['q', 'Q'] and len(msg['Content']) > 1:
         return qianming.qm(msg['Content'][1:])
+    
+    elif msg['Content'] in ['妹子', '美女']:
+        return meizitu.meizi()
     
     else:
         key = msg['Content'][-1]
